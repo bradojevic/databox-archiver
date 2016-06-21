@@ -1,0 +1,4 @@
+
+fetch_interval: 10
+fetch_count: 400
+core_config_reload_interval: 60
