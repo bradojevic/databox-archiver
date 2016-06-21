@@ -23,6 +23,8 @@ def pass_gen(interval):
 
 
 def main():
+    sys.stderr.write('.')
+    sys.stderr.flush()
     ts = datetime.datetime.utcnow().replace(tzinfo=pytz.timezone('UTC'))
     for_date = ts.strftime('%Y-%m-%d')
     zip_file = os.path.join(settings.DATABOX_OUT, '{0}.zip'.format(for_date, ))
@@ -37,6 +39,7 @@ def main():
             contains=for_date
         )
         for json_file in json_files:
+            print >> sys.stderr, json_file
             zip_handle.write(
                 json_file, os.path.basename(json_file), zipfile.ZIP_DEFLATED
             )
